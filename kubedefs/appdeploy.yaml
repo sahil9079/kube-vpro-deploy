@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vproapp
-        image: sahil9079/vpro_app
+        image: sahil9079/vprofileapp
         imagePullPolicy: Always
         ports:
         - name: vproapp-port
