@@ -5,10 +5,10 @@ metadata:
   labels:
     app: vprodb
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: vprodb
+  replicas: 1
   template:
     metadata:
       labels:
@@ -23,7 +23,7 @@ spec:
         ports:
         - name: vprodb-port
           containerPort: 3306
-        env: 
+        env:
          - name: MYSQL_ROOT_PASSWORD
            valueFrom:
              secretKeyRef:
@@ -32,12 +32,12 @@ spec:
       volumes:
         - name: vpro-db-data
           persistentVolumeClaim:
-            claimName: db-pv-claim
+            claimName: db-pv-claim 
 
-      initcontainers:
+      initContainers:
         - name: busybox
           image: busybox:latest
-          args: ["rm","-rf","/var/lib/mysql/lost+found"]
+          args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
           volumeMounts:
             - name: vpro-db-data
-              mountPath: /var/lib/mysql      
+              mountPath: /var/lib/mysql 
