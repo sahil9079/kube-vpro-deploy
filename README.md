@@ -1,25 +1,51 @@
-# Prerequisites
-#
-- JDK 11 
-- Maven 3 
-- MySQL 8
+# 🐳 Full-Stack Java App Deployment with Docker & Kubernetes on AWS
 
-# Technologies 
-- Spring MVC
-- Spring Security
-- Spring Data JPA
-- Maven
-- JSP
-- Tomcat
-- MySQL
-- Memcached
-- Rabbitmq
-- ElasticSearch
-# Database
-Here,we used Mysql DB 
-sql dump file:
-- /src/main/resources/db_backup.sql
-- db_backup.sql file is a mysql dump file.we have to import this dump to mysql db server
-- > mysql -u <user_name> -p accounts < db_backup.sql
+This project demonstrates end-to-end DevOps practices using **Docker**, **Docker Compose**, and **Kubernetes (Kops)** to deploy a full-stack Java web application on AWS. It includes an NGINX web layer, Tomcat application layer, MySQL database, Memcached for caching, and RabbitMQ for messaging.
+
+---
+
+## 🧱 Project Architecture
+
+### 🔹 Components
+
+| Service    | Description                                      | Tech Stack             |
+|------------|--------------------------------------------------|------------------------|
+| `web`      | Load balancer / frontend                         | NGINX                  |
+| `app`      | Java app build & deploy                          | Maven + Tomcat         |
+| `database` | Data layer                                       | MySQL 8                |
+| `cache`    | Caching                                          | Memcached              |
+| `queue`    | Messaging queue                                  | RabbitMQ with UI       |
+
+---
+
+## 🚀 Technologies Used
+
+- **Build Tool:** Maven
+- **Database:** MySQL
+- **Web Server:** Tomcat
+- **Cache:** Memcached
+- **Queue:** RabbitMQ
+- **Containerization:** Docker, Docker Compose
+- **Orchestration:** Kubernetes with Kops
+- **Cloud:** AWS EC2, S3, Route53
+- **Domain:** GoDaddy (subdomain for ingress)
+
+---
+
+## 📦 Docker Setup
+
+### ✅ Docker Images Built
+
+- `web` - NGINX
+- `app` - Spring Boot + Tomcat (from Maven build)
+- `database` - MySQL with SQL dump preloaded
+
+Each image is pushed to your Docker Hub account.
+
+```bash
+# Sample build & push
+docker build -t sahil9079/vprofileapp ./app
+docker push sahil9079/vprofileapp
+
 
 
